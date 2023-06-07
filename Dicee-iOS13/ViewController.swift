@@ -17,24 +17,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        diceImageView1.image = UIImage(imageLiteralResourceName: "DiceSix")
-        diceImageView2.image = UIImage(imageLiteralResourceName: "DiceTwo")
     }
     
     func getRandomDiceImageName() -> String {
         var randomIndex = Int.random(in: 0..<diceImageNames.count)
+        
         return diceImageNames[randomIndex]
-    }
-    
-    func changeDiceImage(newDiceImageName: String, diceImage: UIImageView) {
-        diceImage.image = UIImage(imageLiteralResourceName: newDiceImageName)
     }
     
     func randomiseDiceImage(diceImage: UIImageView) {
         var newDiceImageName = getRandomDiceImageName()
         
-        changeDiceImage(newDiceImageName: newDiceImageName, diceImage: diceImage)
+        diceImage.image = UIImage(imageLiteralResourceName: newDiceImageName)
     }
     
     @IBAction func rollButtonPressed(_ sender: UIButton) {
