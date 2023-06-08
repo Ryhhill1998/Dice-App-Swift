@@ -10,25 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var diceImageNames = ["DiceOne", "DiceTwo", "DiceThree", "DiceFour", "DiceFive", "DiceSix"]
+    let diceImageNames = ["DiceOne", "DiceTwo", "DiceThree", "DiceFour", "DiceFive", "DiceSix"]
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    func getRandomDiceImageName() -> String {
-        var randomIndex = Int.random(in: 0..<diceImageNames.count)
-        
-        return diceImageNames[randomIndex]
-    }
-    
     func randomiseDiceImage(diceImage: UIImageView) {
-        var newDiceImageName = getRandomDiceImageName()
+        guard let newImageName = diceImageNames.randomElement() else {
+            return
+        }
         
-        diceImage.image = UIImage(imageLiteralResourceName: newDiceImageName)
+        diceImage.image = UIImage(imageLiteralResourceName: newImageName)
     }
     
     @IBAction func rollButtonPressed(_ sender: UIButton) {
